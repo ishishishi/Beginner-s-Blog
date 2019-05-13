@@ -9,12 +9,15 @@
 
 {% block main %}
 {% for post in posts %}
-<h1>{{ post.title }}</h1>
-<p>{{ post.text | truncatechars:20 }}</p>
-<div class="float-right">
-  <a>投稿者：<a/>
-  <a class="user" href="{% url 'blog:user_detail' pk=post.user.pk %}">{{ post.user }}</a>
-  <a class="post-detail ml-4" href="{% url 'blog:post_detail'  pk=post.pk %}">記事を読む</a>
+<div class="border-bottom">
+  <h1>{{ post.title }}</h1>
+  <p>{{ post.text | truncatechars:20 }}</p>
+
+  <div>
+    <a>投稿者：<a/>
+    <a class="user" href="{% url 'blog:user_detail' pk=post.user.pk %}">{{ post.user }}</a>
+    <a class="post-detail ml-4 float-right" href="{% url 'blog:post_detail'  pk=post.pk %}">記事を読む</a>
+  </div>
 </div>
 {% endfor %}
 

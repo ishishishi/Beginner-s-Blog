@@ -11,6 +11,10 @@
 {% block main %}
 <h1>{{ post_detail.title }}</h1>
 <p>{{ post_detail.text | linebreaks | urlize }}</p>
+<a>投稿者：<a/>
+<a class="user" href="{% url 'blog:user_detail' pk=post_detail.user.pk %}">{{ post_detail.user }}</a>
+<p class="mb-0">投稿日時：{{ post_detail.created_datetime }}
+<p>更新日時：{{ post_detail.updated_datetime }}
 
 {% if request.user == post_detail.user %}
 <div class=>

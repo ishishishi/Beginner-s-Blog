@@ -4,13 +4,19 @@
 {% endblock %}
 
 {% block main %}
-<h1>{{ user.username }}さんのマイページです</h1>
-
+<h2>{{ user.username }}さんのマイページ</h2>
+<h3 class="mt-4">・投稿記事一覧</h3>
+<hr />
 {% for user_post in user_posts %}
-
-<h1>{{ user_post.title }}</h1>
-<p>{{ user_post.text | truncatechars:20 }}</p>
-<a class="post-detail ml-4 float-right" href="{% url 'blog:post_detail'  pk=user_post.pk %}">記事を読む</a>
+<div class="border-bottom">
+  <div>
+    <h1>{{ user_post.title }}</h1>
+    <p>{{ user_post.text | truncatechars:20 }}</p>
+    <a>投稿日時：{{ user_post.created_datetime }}</a>
+    <a class="ml-2">更新日時：{{ user_post.updated_datetime }}</a>
+    <a class="post-detail  float-right" href="{% url 'blog:post_detail'  pk=user_post.pk %}">記事を読む</a>
+  </div>
+</div>
 
 {% endfor %}
 
