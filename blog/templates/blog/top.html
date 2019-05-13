@@ -8,7 +8,6 @@
 
 
 {% block main %}
-
 {% for post in posts %}
 <h1>{{ post.title }}</h1>
 <p>{{ post.text | truncatechars:20 }}</p>
