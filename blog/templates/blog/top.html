@@ -11,7 +11,7 @@
 
 {% for post in posts %}
 <h1>{{ post.title }}</h1>
-<p>{{ post.text }}</p>
+<p>{{ post.text | truncatechars:20 }}</p>
 <div class="float-right">
   <a>投稿者：<a/>
   <a class="user" href="{% url 'blog:user_detail' pk=post.user.pk %}">{{ post.user }}</a>

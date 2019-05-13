@@ -126,3 +126,14 @@ STATICFILES_DIRS = (
 LOGIN_URL = 'blog:login'
 LOGIN_REDIRECT_URL = 'blog:top'
 LOGOUT_REDIRECT_URL = 'blog:top'
+
+DEBUG = False
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())

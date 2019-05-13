@@ -2,13 +2,13 @@
 
 {% block main %}
 <h1>{{ post_detail.title }}</h1>
-<p>{{ post_detail.text }}</p>
+<p>{{ post_detail.text | linebreaks | urlize }}</p>
 
 {% if request.user == post_detail.user %}
-<button><a class="btn" href="{% url 'blog:edit_post' post_detail.pk %}">編集</a></button>
+<a class="btn btn-primary mb-2" href="{% url 'blog:edit_post' post_detail.pk %}">編集</a>
 
 <form method="post" action="{% url 'blog:posts_delete' post_detail.pk %}">{% csrf_token %}
-    <button class="btn" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
+    <button class="btn btn-secondary" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</button>
 </form>
 {% endif %}
 
