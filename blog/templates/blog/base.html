@@ -1,0 +1,66 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  {% block head %}
+  {% endblock %}
+  <title>
+    Beginner's　Blog
+  </title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+    <a class="top-title navbar-brand ml-0 mr-4" href="{% url 'blog:top' %}">Beginner's Blog</a>
+
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="Navber">
+      <ul class="navbar-nav mr-0">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'blog:posts_new' %}">投稿</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'blog:user_detail' request.user.id %}">My Page</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'blog:logout' %}">Sign out</a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'blog:sign_up' %}">Sign up</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'blog:login' %}">Sign in</a>
+        </li>
+        {% endif %}
+      </ul>
+
+    </div>
+  </nav>
+
+
+
+  <div class="container">
+
+    {% block main %}
+    {% endblock %}
+
+  </div>
+
+  {% block fotter %}
+  {% endblock %}
+
+</body>
+</html>

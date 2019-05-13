@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block main %}
+
+<h1>{{ user.username }}さんのマイページです</h1>
+
+{% for user_post in user_posts %}
+
+<h1>{{ user_post.title }}</h1>
+<p>{{ user_post.text }}</p>
+<a class="post-detail ml-4" href="{% url 'blog:post_detail'  pk=user_post.pk %}">記事を読む</a>
+
+
+{% endfor %}
+
+{% endblock %}
