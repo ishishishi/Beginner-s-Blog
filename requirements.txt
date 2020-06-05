@@ -1,6 +1,6 @@
 certifi==2018.11.29
 chardet==3.0.4
-Django==2.2.1
+Django==2.2.13
 django-mathfilters==0.4.0
 idna==2.8
 oauthlib==3.0.1
